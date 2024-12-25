@@ -119,9 +119,6 @@ struct thread
 	int nice;                           /* Determines how nice a thread should
 	                                       be to other threads. */
 	fixed_t recent_cpu;                 /* The recent cpu. */
-
-    int64_t cpu_time; /* Time spent on the CPU edit by mmc*/
-
   };
 
 /* If false (default), use round-robin scheduler.
