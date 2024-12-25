@@ -660,23 +660,6 @@ thread_set_sleeping (int64_t ticks)
   list_push_back (&sleeping_list, &cur->sleepelem);
   thread_block ();
 }
-//report added by mmc
-void report_cpu_usage(void) {
-    struct thread *t;
-    int64_t total_cpu_time = 0;
-    int64_t total_elapsed_time = timer_ticks();
-
-    /* Iterate over all threads */
-    enum intr_level old_level = intr_disable();
-    for (t = list_begin(&all_list); t != list_end(&all_list);
-         t = list_next(t)) {
-        total_cpu_time += t->cpu_time;
-    }
-    intr_set_level(old_level);
-
-    printf("CPU Usage: %d%%\n", 
-           (int)(total_cpu_time * 100 / total_elapsed_time));
-}
 
 
 /* Add some preconditions for THRAED_YIELD. */
