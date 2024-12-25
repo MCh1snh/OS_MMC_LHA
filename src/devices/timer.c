@@ -171,12 +171,6 @@ timer_print_stats (void)
 static void
 timer_interrupt (struct intr_frame *args UNUSED)
 {
-  static int64_t tick_count = 0;
-tick_count++;
-if (tick_count % 100 == 0) {  // Report every 100 ticks
-    report_cpu_usage();
-}
-
   ticks++;
   if (thread_mlfqs && ticks % TIMER_FREQ == 0)
     thread_tick_one_second ();
